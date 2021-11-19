@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class RouteDetailsViewModel {
 
+    private Long id;
     private String gpxCoordinates;
     private String description;
     private LevelEnum level;
@@ -13,7 +14,13 @@ public class RouteDetailsViewModel {
     private String videoUrl;
     private Set<Picture> pictures;
 
-    public RouteDetailsViewModel() {
+    public Long getId() {
+        return id;
+    }
+
+    public RouteDetailsViewModel setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getGpxCoordinates() {

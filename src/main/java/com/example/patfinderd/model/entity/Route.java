@@ -1,6 +1,7 @@
 package com.example.patfinderd.model.entity;
 
 import com.example.patfinderd.model.entity.enums.LevelEnum;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,9 +25,18 @@ public class Route extends BaseEntity {
     private String videoUrl;
     private Set<Picture> pictures;
     private Set<Category> categories;
+    private List<Comment> comments;
 
-    public Route() {
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    public List<Comment> getComments() {
+        return comments;
     }
+
+    public Route setComments(List<Comment> comments) {
+        this.comments = comments;
+        return this;
+    }
+
 
     @Column(columnDefinition = "LONGTEXT")
     public String getGpxCoordinates() {
