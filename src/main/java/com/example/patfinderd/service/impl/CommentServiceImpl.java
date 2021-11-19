@@ -1,6 +1,7 @@
 package com.example.patfinderd.service.impl;
 
 import com.example.patfinderd.model.entity.Comment;
+import com.example.patfinderd.model.service.CommentServiceModel;
 import com.example.patfinderd.model.view.CommentViewModel;
 import com.example.patfinderd.repository.RouteRepository;
 import com.example.patfinderd.service.CommentService;
@@ -17,6 +18,11 @@ public class CommentServiceImpl implements CommentService {
 
   public CommentServiceImpl(RouteRepository routeRepository) {
     this.routeRepository = routeRepository;
+  }
+
+  @Override
+  public CommentViewModel createComment(CommentServiceModel commentServiceModel) {
+    throw new UnsupportedOperationException("NOT YET!");
   }
 
   @Transactional
