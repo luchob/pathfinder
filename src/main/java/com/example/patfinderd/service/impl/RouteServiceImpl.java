@@ -10,6 +10,7 @@ import com.example.patfinderd.service.RouteService;
 import com.example.patfinderd.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class RouteServiceImpl implements RouteService {
         this.modelMapper = modelMapper;
     }
 
+    @Transactional
     @Override
     public List<RouteViewModel> findAllRoutesView() {
         return routeRepository
@@ -55,12 +57,13 @@ public class RouteServiceImpl implements RouteService {
                 .getCategories()
                 .stream()
                 .map(categoryService::findCategoryByName)
-                .collect(Collectors.toSet()));
+                .collect(Collectors.toList()));
 
 
         routeRepository.save(route);
     }
 
+    @Transactional
     @Override
     public RouteDetailsViewModel findRouteById(Long id) {
         return routeRepository

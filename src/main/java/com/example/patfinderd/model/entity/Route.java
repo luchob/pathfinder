@@ -2,7 +2,6 @@ package com.example.patfinderd.model.entity;
 
 import com.example.patfinderd.model.entity.enums.LevelEnum;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,20 +22,9 @@ public class Route extends BaseEntity {
     private String name;
     private User author;
     private String videoUrl;
-    private Set<Picture> pictures;
-    private Set<Category> categories;
+    private List<Picture> pictures;
+    private List<Category> categories;
     private List<Comment> comments;
-
-    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public Route setComments(List<Comment> comments) {
-        this.comments = comments;
-        return this;
-    }
-
 
     @Column(columnDefinition = "LONGTEXT")
     public String getGpxCoordinates() {
@@ -92,21 +80,31 @@ public class Route extends BaseEntity {
         this.description = description;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    public Set<Category> getCategories() {
+    @ManyToMany(fetch = FetchType.LAZY)
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
-    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
-    public Set<Picture> getPictures() {
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    public List<Picture> getPictures() {
         return pictures;
     }
 
-    public void setPictures(Set<Picture> pictures) {
+    public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
+    }
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public Route setComments(List<Comment> comments) {
+        this.comments = comments;
+        return this;
     }
 }

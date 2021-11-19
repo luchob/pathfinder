@@ -7,6 +7,7 @@ import com.example.patfinderd.service.CommentService;
 import com.example.patfinderd.service.exceptions.ObjectNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,7 @@ public class CommentServiceImpl implements CommentService {
     this.routeRepository = routeRepository;
   }
 
+  @Transactional
   @Override
   public List<CommentViewModel> getComments(Long routeId) {
     var routeOpt = routeRepository.
