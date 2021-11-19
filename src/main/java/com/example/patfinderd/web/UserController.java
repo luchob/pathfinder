@@ -1,6 +1,5 @@
 package com.example.patfinderd.web;
 
-import com.example.patfinderd.model.binding.UserLoginBindingModel;
 import com.example.patfinderd.model.binding.UserRegisterBindingModel;
 import com.example.patfinderd.model.service.UserServiceModel;
 import com.example.patfinderd.model.view.UserViewModel;
@@ -36,11 +35,6 @@ public class UserController {
     }
 
 
-    @ModelAttribute
-    public UserLoginBindingModel userLoginBindingModel() {
-        return new UserLoginBindingModel();
-    }
-
     @GetMapping("/register")
     public String register(Model model) {
 
@@ -67,13 +61,6 @@ public class UserController {
                 .map(userRegisterBindingModel, UserServiceModel.class));
 
         return "redirect:login";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("isExists", true);
-
-        return "login";
     }
 
     @GetMapping("/profile/{id}")

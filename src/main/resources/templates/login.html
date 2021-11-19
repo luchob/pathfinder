@@ -24,37 +24,34 @@
         <div class="row g-3 align-items-center">
 
             <form
-                    th:object="${userLoginBindingModel}"
                     th:action="@{/users/login}"
                     th:method="post">
                 <div>
-                    <h5 th:if="${!isExists}"  class="bg-danger">Incorrect username or password</h5>
+<!--                    <h5 th:if="${!isExists}"  class="bg-danger">Incorrect username or password</h5>-->
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label for="email" class="col-form-label ">Email</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
-                               th:field="*{username}"
-                               th:errorclass="'is-invalid bg-danger'"
-                               required minlength="4" maxlength="20"
-                               id="inputUsername"
-                               class="form-control"
-                               aria-describedby="usernameHelpInline">
+                               name="email"
+                               required
+                               id="email"
+                               class="form-control">
                     </div>
                     <small class="invalid-feedback">
-                            <span class="bg-danger">Username is not correct </span>
+                            <span class="bg-danger">Email is not correct </span>
                     </small>
                 </div>
                 <div>
                     <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
+                        <label for="password" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
-                        <input type="password"
-                               th:field="*{password}"
-                               required minlength="4" maxlength="20"
-                               id="inputPassword" class="form-control"
-                               aria-describedby="passwordHelpInline">
+                        <input id="password"
+                                type="password"
+                               name="password"
+                               required
+                                class="form-control">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">
