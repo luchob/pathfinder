@@ -1,6 +1,6 @@
 package com.example.patfinderd.model.entity;
 
-import com.example.patfinderd.model.entity.enims.CategoryNameEnum;
+import com.example.patfinderd.model.entity.enums.CategoryNameEnum;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

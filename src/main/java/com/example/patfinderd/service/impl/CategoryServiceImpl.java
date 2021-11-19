@@ -1,7 +1,7 @@
 package com.example.patfinderd.service.impl;
 
 import com.example.patfinderd.model.entity.Category;
-import com.example.patfinderd.model.entity.enims.CategoryNameEnum;
+import com.example.patfinderd.model.entity.enums.CategoryNameEnum;
 import com.example.patfinderd.repository.CategoryRepository;
 import com.example.patfinderd.service.CategoryService;
 import org.springframework.stereotype.Service;

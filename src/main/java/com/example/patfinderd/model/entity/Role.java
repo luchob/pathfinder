@@ -1,6 +1,6 @@
 package com.example.patfinderd.model.entity;
 
-import com.example.patfinderd.model.entity.enims.RoleNameEnum;
+import com.example.patfinderd.model.entity.enums.RoleNameEnum;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

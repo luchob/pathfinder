@@ -1,7 +1,7 @@
 package com.example.patfinderd.model.service;
 
 import com.example.patfinderd.model.entity.Role;
-import com.example.patfinderd.model.entity.enims.LevelEnum;
+import com.example.patfinderd.model.entity.enums.LevelEnum;
 import java.util.Set;
 
 public class UserServiceModel {

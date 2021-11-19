@@ -3,7 +3,6 @@ package com.example.patfinderd.web;
 import com.example.patfinderd.model.binding.RouteAddBindingModel;
 import com.example.patfinderd.model.service.RouteServiceModel;
 import com.example.patfinderd.service.RouteService;
-import com.example.patfinderd.util.CurrentUser;
 import java.io.IOException;
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -22,12 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RouteController {
 
     private final RouteService routeService;
-    private final CurrentUser currentUser;
     private final ModelMapper modelMapper;
 
-    public RouteController(RouteService routeService, CurrentUser currentUser, ModelMapper modelMapper) {
+    public RouteController(RouteService routeService, ModelMapper modelMapper) {
         this.routeService = routeService;
-        this.currentUser = currentUser;
         this.modelMapper = modelMapper;
     }
 
@@ -50,11 +47,6 @@ public class RouteController {
 
     @GetMapping("/add")
     public String add() {
-
-        if (currentUser.getId() == null) {
-            return "redirect:/users/login";
-        }
-
         return "add-route";
     }
 

@@ -76,7 +76,7 @@
                 <select th:field="*{level}"
                         th:errorclass="'is-invalid bg-danger'" id="level" class="custom-select">
                     <option value="" selected>Select level</option>
-                    <option th:each="l : ${T(com.example.patfinderd.model.entity.enims.LevelEnum).values()}" th:value="${l}" th:text="${l}">Select level</option>
+                    <option th:each="l : ${T(com.example.patfinderd.model.entity.enums.LevelEnum).values()}" th:value="${l}" th:text="${l}">Select level</option>
                 </select>
             </div>
         </div>
@@ -92,7 +92,7 @@
         <div>
             <div class="form-group p-3">
                 <label class="p-2" for="categories">Categories:</label>
-                <input  th:each="c : ${T(com.example.patfinderd.model.entity.enims.CategoryNameEnum).values()}"
+                <input  th:each="c : ${T(com.example.patfinderd.model.entity.enums.CategoryNameEnum).values()}"
                        th:object="${c}" th:text="${c}" th:value="${c}" class="m-3" type="checkbox" name="categories" id="categories"
                        value="1" text="Category">
 				<br>

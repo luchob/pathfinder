@@ -1,6 +1,6 @@
 package com.example.patfinderd.model.view;
 
-import com.example.patfinderd.model.entity.enims.LevelEnum;
+import com.example.patfinderd.model.entity.enums.LevelEnum;
 
 public class UserViewModel {
 

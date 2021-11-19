@@ -2,8 +2,8 @@ package com.example.patfinderd.model.service;
 
 import com.example.patfinderd.model.entity.Picture;
 import com.example.patfinderd.model.entity.User;
-import com.example.patfinderd.model.entity.enims.CategoryNameEnum;
-import com.example.patfinderd.model.entity.enims.LevelEnum;
+import com.example.patfinderd.model.entity.enums.CategoryNameEnum;
+import com.example.patfinderd.model.entity.enums.LevelEnum;
 import java.util.Set;
 
 public class RouteServiceModel {

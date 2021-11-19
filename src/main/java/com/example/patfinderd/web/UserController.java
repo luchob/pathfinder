@@ -61,10 +61,7 @@ public class UserController {
             return "redirect:register";
         }
 
-        boolean isNameExists = userService.isNameExists(userRegisterBindingModel.getUsername());
-        if(isNameExists){
-            //ToDo.. redirect with message
-        }
+        //TODO: existing user name with custom validator
 
         userService.registerUser(modelMapper
                 .map(userRegisterBindingModel, UserServiceModel.class));
@@ -78,45 +75,6 @@ public class UserController {
 
         return "login";
     }
-
-    @PostMapping("/login")
-    public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel,
-                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes
-                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
-                            bindingResult);
-
-            return "redirect:login";
-        }
-
-        UserServiceModel user = userService
-                .findUserByUsernameAndPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
-
-        if (user == null) {
-            redirectAttributes
-                    .addFlashAttribute("isExists", false)
-                    .addFlashAttribute("userLoginBindingModel", userLoginBindingModel)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel",
-                            bindingResult);
-
-            return "redirect:login";
-        }
-
-        userService.loginUser(user.getId(), user.getUsername());
-
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/logout")
-    public String logout() {
-        userService.logout();
-        return "redirect:/";
-    }
-
 
     @GetMapping("/profile/{id}")
     private String profile(@PathVariable Long id, Model model){

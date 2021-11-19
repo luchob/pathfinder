@@ -1,7 +1,7 @@
 package com.example.patfinderd.model.binding;
 
-import com.example.patfinderd.model.entity.enims.CategoryNameEnum;
-import com.example.patfinderd.model.entity.enims.LevelEnum;
+import com.example.patfinderd.model.entity.enums.CategoryNameEnum;
+import com.example.patfinderd.model.entity.enums.LevelEnum;
 import java.util.Set;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
