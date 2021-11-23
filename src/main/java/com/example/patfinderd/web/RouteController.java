@@ -6,6 +6,8 @@ import com.example.patfinderd.service.RouteService;
 import java.io.IOException;
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/routes")
 public class RouteController {
 
+    private static Logger LOGGER = LoggerFactory.getLogger(RouteController.class);
+
     private final RouteService routeService;
     private final ModelMapper modelMapper;
 
@@ -30,6 +34,8 @@ public class RouteController {
 
     @GetMapping("/all")
     public String allRoutes(Model model) {
+
+        LOGGER.debug("All routes were requested...");
 
         model.addAttribute("routes", routeService.findAllRoutesView());
 
