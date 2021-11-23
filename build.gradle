@@ -26,6 +26,8 @@ dependencies {
 	implementation 'org.modelmapper:modelmapper:2.4.4'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.hsqldb:hsqldb'
 }
 
 test {

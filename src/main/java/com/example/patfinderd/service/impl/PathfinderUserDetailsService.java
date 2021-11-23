@@ -27,7 +27,6 @@ public class PathfinderUserDetailsService implements UserDetailsService {
         findByEmail(email).
         orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " was not found."));
 
-
     return map(userEntity);
   }
 

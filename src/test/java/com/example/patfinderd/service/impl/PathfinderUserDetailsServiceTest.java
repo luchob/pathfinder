@@ -66,10 +66,12 @@ class PathfinderUserDetailsServiceTest {
     var actual = serviceToTest.loadUserByUsername(testUser.getEmail());
 
     // Assert
-    Assertions.assertEquals(actual.getUsername(), testUser.getEmail());
+
+    String expectedRoles = "ROLE_ADMIN, ROLE_USER";
     String actualRoles = actual.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(
         Collectors.joining(", "));
-    String expectedRoles = "ROLE_ADMIN, ROLE_USER";
+
+    Assertions.assertEquals(actual.getUsername(), testUser.getEmail());
     Assertions.assertEquals(expectedRoles, actualRoles);
   }
 

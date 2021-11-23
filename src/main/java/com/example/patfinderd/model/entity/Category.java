@@ -1,10 +1,10 @@
 package com.example.patfinderd.model.entity;
 
 import com.example.patfinderd.model.entity.enums.CategoryNameEnum;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +26,7 @@ public class Category extends BaseEntity{
         this.name = name;
     }
 
-    @Column(columnDefinition = "TEXT")
+    @Lob
     public String getDescription() {
         return description;
     }
