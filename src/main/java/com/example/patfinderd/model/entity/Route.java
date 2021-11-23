@@ -2,11 +2,13 @@ package com.example.patfinderd.model.entity;
 
 import com.example.patfinderd.model.entity.enums.LevelEnum;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,7 +28,7 @@ public class Route extends BaseEntity {
     private List<Category> categories;
     private List<Comment> comments;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Lob
     public String getGpxCoordinates() {
         return gpxCoordinates;
     }
@@ -71,7 +73,7 @@ public class Route extends BaseEntity {
         this.videoUrl = videoUrl;
     }
 
-    @Column(columnDefinition = "TEXT")
+    @Lob
     public String getDescription() {
         return description;
     }
@@ -98,7 +100,7 @@ public class Route extends BaseEntity {
         this.pictures = pictures;
     }
 
-    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Comment> getComments() {
         return comments;
     }

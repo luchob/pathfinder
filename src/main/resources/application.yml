@@ -14,7 +14,7 @@ spring:
         enabled: true
   sql:
     init:
-      mode: always
+      mode: never
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
     # For MySQL 8
@@ -22,7 +22,7 @@ spring:
     #For MySQL 5
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     open-in-view: false
     properties:
       hibernate:
