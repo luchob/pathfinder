@@ -51,6 +51,7 @@ public class CommentRestController {
   ) {
     CommentServiceModel serviceModel =
         modelMapper.map(newCommentBindingModel, CommentServiceModel.class);
+    serviceModel.setCreator(principal.getUsername());
     serviceModel.setRouteId(routeId);
 
     CommentViewModel newComment =

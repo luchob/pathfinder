@@ -30,7 +30,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WithMockUser("lucho")
+@WithMockUser("lucho@example.com")
 @SpringBootTest
 @AutoConfigureMockMvc
 class CommentRestControllerTest {
@@ -57,6 +57,7 @@ class CommentRestControllerTest {
     testUser = new User();
     testUser.setPassword("password");
     testUser.setUsername("lucho");
+    testUser.setEmail("lucho@example.com");
     testUser.setFullName("lucho balev");
 
     testUser = userRepository.save(testUser);
