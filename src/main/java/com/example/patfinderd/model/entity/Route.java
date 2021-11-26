@@ -105,6 +105,10 @@ public class Route extends BaseEntity {
         return comments;
     }
 
+    public void addComment(Comment comment) {
+        getComments().add(comment);
+    }
+
     public Route setComments(List<Comment> comments) {
         this.comments = comments;
         return this;

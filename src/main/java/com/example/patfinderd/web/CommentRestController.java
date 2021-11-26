@@ -5,6 +5,8 @@ import com.example.patfinderd.model.service.CommentServiceModel;
 import com.example.patfinderd.model.validation.ApiError;
 import com.example.patfinderd.model.view.CommentViewModel;
 import com.example.patfinderd.service.CommentService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import java.net.URI;
 import java.security.Principal;
 import java.util.List;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 public class CommentRestController {
@@ -43,11 +46,12 @@ public class CommentRestController {
         commentService.getComments(routeId));
   }
 
+  @ApiOperation(value = "Create a new comment")
   @PostMapping("/api/{routeId}/comments")
   public ResponseEntity<CommentViewModel> newComment(
-      @AuthenticationPrincipal UserDetails principal,
+      @ApiIgnore @AuthenticationPrincipal UserDetails principal,
       @PathVariable Long routeId,
-      @RequestBody @Valid NewCommentBindingModel newCommentBindingModel
+      @ApiParam(name = "NewComment") @RequestBody @Valid NewCommentBindingModel newCommentBindingModel
   ) {
     CommentServiceModel serviceModel =
         modelMapper.map(newCommentBindingModel, CommentServiceModel.class);
