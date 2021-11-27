@@ -8,3 +8,9 @@ services:
     environment:
       - MYSQL_DATABASE=mobilelele
       - MYSQL_ALLOW_EMPTY_PASSWORD="yes"
+#  pathfinder:
+#    image: luchob/pathfinder:v1
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - MYSQL_HOST=db
