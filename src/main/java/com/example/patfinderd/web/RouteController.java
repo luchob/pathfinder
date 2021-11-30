@@ -35,6 +35,7 @@ public class RouteController {
     @GetMapping("/all")
     public String allRoutes(Model model) {
 
+        LOGGER.debug("Model attribute {}.", model.getAttribute("test"));
         LOGGER.debug("All routes were requested...");
 
         model.addAttribute("routes", routeService.findAllRoutesView());

@@ -1,6 +1,12 @@
 const routeId = document.getElementById('routeId').value
 
+const csrfHeaderName = document.head.querySelector('[name="_csrf_header"]').content;
+const csrfHeaderValue = document.head.querySelector('[name="_csrf"]').content;
+
 const commentsCtnr = document.getElementById('commentCtnr')
+
+const commentForm = document.getElementById('commentForm')
+commentForm.addEventListener("submit", handleCommentSubmit)
 
 const allComments = []
 
@@ -10,6 +16,50 @@ const displayComments = (comments) => {
         return asComment(c)
       }
   ).join('')
+}
+
+async function handleCommentSubmit(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const url = form.action;
+  const formData = new FormData(form);
+
+  try {
+    const responseData = await postFormDataAsJson({url, formData});
+
+    commentsCtnr.insertAdjacentHTML("afterbegin", asComment(responseData));
+
+    form.reset();
+  } catch (error) {
+    console.log(error)
+  }
+  console.log('going to submit a comment!')
+}
+
+async function postFormDataAsJson({url, formData}) {
+
+  const plainFormData = Object.fromEntries(formData.entries());
+  const formDataAsJSONString = JSON.stringify(plainFormData);
+
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      [csrfHeaderName] : csrfHeaderValue,
+      "Content-Type" : "application/json",
+      "Accept" :"application/json"
+    },
+    body: formDataAsJSONString
+  }
+
+  const response = await fetch(url, fetchOptions);
+
+  if (!response.ok) {
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
+  }
+
+  return response.json();
 }
 
 function asComment(c) {
