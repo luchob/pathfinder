@@ -32,7 +32,21 @@ async function handleCommentSubmit(event) {
 
     form.reset();
   } catch (error) {
-    console.log(error)
+
+    let errorObj = JSON.parse(error.message);
+
+    if (errorObj.fieldWithErrors) {
+      errorObj.fieldWithErrors.forEach(
+          e => {
+            let elementWithError = document.getElementById(e);
+            if (elementWithError) {
+              elementWithError.classList.add("is-invalid");
+            }
+          }
+
+      )
+    }
+
   }
   console.log('going to submit a comment!')
 }
